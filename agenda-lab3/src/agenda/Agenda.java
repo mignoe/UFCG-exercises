@@ -56,19 +56,15 @@ public class Agenda {
 	 * @return Dados do contato. Null se não há contato na posição.
 	 */
 	public String getContato(int posicao) {
-		String contato = contatos[posicao].getNomeCompleto();
-		boolean ehFavorito = Arrays.asList(getFavoritos()).contains(contato);
+		String nomeContato = contatos[posicao].getNomeCompleto();
+		boolean ehFavorito = Arrays.asList(getFavoritos()).contains(nomeContato);
 		if (ehFavorito) {
-			contato = "❤️ " + contato;
+			return "❤️ " + this.contatos[posicao];
+		}else {
+			return this.contatos[posicao].toString();
 		}
-		return contato;
 	}
 	
-	public String getTagContato(int posicao) {
-		String tag = contatos[posicao].getTags();
-		
-		return tag;
-	}
 	/**
 	 * Cadastra um contato em uma posição. Um cadastro em uma posição que já existe sobrescreve o anterior. 
 	 * @param posicao Posição do contato.
@@ -80,21 +76,46 @@ public class Agenda {
 			this.contatos[posicao] = new Contato(nome, sobrenome, telefone);
 	}
 	
-	public boolean contatoJaExiste(String nome, String sobrenome) {
+	public boolean contatoJaCadastrado(String nome, String sobrenome) {
 		String contato = nome + " " + sobrenome;
-		boolean contatoJaExiste = Arrays.asList(getContatos()).contains(contato);
+		boolean contatoJaCadastrado = Arrays.asList(getContatos()).contains(contato);
 		
-		return contatoJaExiste;
+		return contatoJaCadastrado;
 	}
 	
 	public void adicionaFavorito(int contato, int posicao) {
 		favoritos[posicao] = contatos[contato];
 		
 	}
-	public void adicionaTag(int[] contatos, String tag) {
+	
+	public boolean ehFavorito(int contato) {
+		String nomeContato = this.contatos[contato].getNomeCompleto();
+		boolean contatoJaFavoritado = Arrays.asList(getFavoritos()).contains(nomeContato);
+		
+		return contatoJaFavoritado;
+	}
+	
+	public void adicionaTag(int[] contatos, String tag, int posicaoTag) {
 		for (int contato : contatos) {
-			this.contatos[contato].adicionarTag(tag);
+			this.contatos[contato].adicionarTag(tag, posicaoTag);
 		}
 	}
-
+	
+	public boolean ehPosicaoComCadastro(int posicao) {
+		boolean ehPosicaoComCadastro = this.contatos[posicao] != null;
+		
+		return ehPosicaoComCadastro;
+	}
+	
+	public void removeContatos(int[] contatos) {
+		for (int contato : contatos) {
+			// Removendo contato dos favoritos;
+			if (ehFavorito(contato)) {
+				int index = Arrays.asList(this.favoritos).indexOf(this.contatos[contato]);
+				this.favoritos[index] = null;
+			}
+			
+			this.contatos[contato] = null;			
+		}
+	}
 }

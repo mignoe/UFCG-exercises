@@ -4,7 +4,7 @@ public class Contato {
 	private String nome;
 	private String sobreNome;
 	private String telefone;
-	private String tags;
+	private String[] tags = new String[5];
 	
 	public Contato(String nome, String sobreNome, String telefone) {
 		this.nome = nome;
@@ -20,20 +20,28 @@ public class Contato {
 		return this.telefone;
 	}
 	
-	public String getTags() {
-		return this.tags;
+	private String getTags() {
+		String tags = "";
+		for (String tag : this.tags) {
+			if (tag != null) {
+				tags += tag + " ";
+			}
+		}
+		
+		return tags;
 	}
 	
-	public void adicionarTag(String tag) {
-		if (tags == null) {
-			tags = "\n" + tag;
-		} else {
-			this.tags += " " + tag;
-		}
+	public void adicionarTag(String tag, int posicao) {
+		this.tags[posicao] = tag;
 	}
 	
 	public String toString() {
-		String stringContato = this.nome + " " + this.sobreNome + "\n" + this.telefone + this.tags;
+		String stringContato = 	this.nome + " " + this.sobreNome + "\n" + 
+								this.telefone;
+		
+		if (!this.getTags().equals("")) {
+			stringContato += "\n" + this.getTags();
+		}
 		
 		return stringContato;
 	}
