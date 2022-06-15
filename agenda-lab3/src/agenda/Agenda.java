@@ -56,9 +56,7 @@ public class Agenda {
 	 * @return Dados do contato. Null se não há contato na posição.
 	 */
 	public String getContato(int posicao) {
-		String nomeContato = contatos[posicao].getNomeCompleto();
-		boolean ehFavorito = Arrays.asList(getFavoritos()).contains(nomeContato);
-		if (ehFavorito) {
+		if (ehFavorito(posicao)) {
 			return "❤️ " + this.contatos[posicao];
 		}else {
 			return this.contatos[posicao].toString();

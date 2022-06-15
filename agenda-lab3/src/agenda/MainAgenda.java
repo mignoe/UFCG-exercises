@@ -189,9 +189,9 @@ public class MainAgenda {
 	}
 	
 	private static void adicionarFavorito(Agenda agenda, Scanner scanner) {
-		System.out.println("\nContato> ");
+		System.out.print("Contato> ");
 		int contato = Integer.parseInt(scanner.nextLine());
-		System.out.println("\nPosição> ");
+		System.out.print("Posição> ");
 		int posicao = Integer.parseInt(scanner.nextLine());
 		
 		if (agenda.ehFavorito(contato)) {
