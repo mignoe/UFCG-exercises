@@ -132,7 +132,7 @@ public class MainAgenda {
 			operacaoValida = false;
 			mensagemErros += "POSIÇÃO INVÁLIDA\n";
 		}
-		if (nome.equals("") || telefone.equals("")) {
+		if ("".equals(nome) || "".equals(telefone)) {
 			operacaoValida = false;
 			mensagemErros += "CONTATO INVALIDO\n";
 		}
