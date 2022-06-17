@@ -28,10 +28,10 @@ public class Contato {
 			}
 		}
 		
-		return tags;
+		return tags.trim();
 	}
 	
-	public void adicionarTag(String tag, int posicao) {
+	public void addTag(String tag, int posicao) {
 		this.tags[posicao] = tag;
 	}
 	
@@ -44,5 +44,9 @@ public class Contato {
 		}
 		
 		return stringContato;
+	}
+	
+	public boolean equals(Contato contato) {
+		return this.getNomeCompleto().equals(contato.getNomeCompleto());
 	}
 }

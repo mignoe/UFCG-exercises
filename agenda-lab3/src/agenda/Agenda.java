@@ -87,22 +87,17 @@ public class Agenda {
 	}
 	
 	public boolean ehFavorito(int contato) {
-		String nomeContato = this.contatos[contato].getNomeCompleto();
-		boolean contatoJaFavoritado = Arrays.asList(getFavoritos()).contains(nomeContato);
-		
-		return contatoJaFavoritado;
+		return Arrays.asList(favoritos).contains(contatos[contato]);
 	}
 	
 	public void adicionaTag(int[] contatos, String tag, int posicaoTag) {
 		for (int contato : contatos) {
-			this.contatos[contato].adicionarTag(tag, posicaoTag);
+			this.contatos[contato].addTag(tag, posicaoTag);
 		}
 	}
 	
 	public boolean ehPosicaoComCadastro(int posicao) {
-		boolean ehPosicaoComCadastro = this.contatos[posicao] != null;
-		
-		return ehPosicaoComCadastro;
+		return this.contatos[posicao] != null;
 	}
 	
 	public void removeContatos(int[] contatos) {
