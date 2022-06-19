@@ -73,7 +73,9 @@ class ContatoTest {
 	@Test
 	void testTagsBiggestPossiblePosition() {
 		this.contatoBase.addTag("ufcg", 0);
-		String retornoEsperado = "Miguel Rodrigues\n555-5551\nufcg";
+		String retornoEsperado = 	"Miguel Rodrigues\n" +
+						"555-5551\n" +
+						"ufcg";
 		assertEquals(this.contatoBase.toString(), retornoEsperado);
 	}
 	
