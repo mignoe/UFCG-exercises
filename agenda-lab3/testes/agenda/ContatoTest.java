@@ -40,7 +40,8 @@ class ContatoTest {
 	@Test
 	void testToString() {
 		String msg = "Esperando retornar nome completo e telefone em duas linhas";
-		String retornoEsperado = "Miguel Rodrigues\n555-5551";
+		String retornoEsperado = 	"Miguel Rodrigues\n" +
+									"555-5551";
 		assertEquals(this.contatoBase.toString(), retornoEsperado, msg);
 	}
 
@@ -48,7 +49,8 @@ class ContatoTest {
 	void testToStringSemSobrenome() {
 		Contato contatoSemSobrenome = new Contato("Miguel", "", "(00) 00000-0000");
 		String msg = "Esperando retornar o primeiro nome e telefone em duas linhas";
-		String retornoEsperado = "Miguel \n(00) 00000-0000";
+		String retornoEsperado = 	"Miguel \n" + 
+									"(00) 00000-0000";
 		assertEquals(contatoSemSobrenome.toString(), retornoEsperado, msg);
 	}
 	
@@ -60,9 +62,53 @@ class ContatoTest {
 	}
 	
 	@Test
+	void testTagsLowestPossiblePosition() {
+		this.contatoBase.addTag("ufcg", 0);
+		String retornoEsperado = "Miguel Rodrigues\n555-5551\nufcg";
+		assertEquals(this.contatoBase.toString(), retornoEsperado);
+	}
+	
+	@Test
+	void testTagsBiggestPossiblePosition() {
+		this.contatoBase.addTag("ufcg", 0);
+		String retornoEsperado = "Miguel Rodrigues\n555-5551\nufcg";
+		assertEquals(this.contatoBase.toString(), retornoEsperado);
+	}
+	
+	@Test
 	void testTagsLowerThanLimitPosition() {
 		assertThrows(IndexOutOfBoundsException.class, () -> {
 			this.contatoBase.addTag("ufcg", -1);
 		});
+	}
+	
+	@Test
+	void testTagsBiggerThanLimitPosition() {
+		assertThrows(IndexOutOfBoundsException.class, () -> {
+			this.contatoBase.addTag("ufcg", 5);
+		});
+	}
+	
+	@Test
+	void testTagsOrderSystem() {
+		this.contatoBase.addTag("ufcg", 0);
+		this.contatoBase.addTag("ccc", 2);
+		this.contatoBase.addTag("pet", 4);
+		this.contatoBase.addTag("caesi", 3);
+		this.contatoBase.addTag("elas", 1);
+		String retornoEsperado = 	"Miguel Rodrigues\n" +
+									"555-5551\n" +
+									"ufcg elas ccc caesi pet";
+		assertEquals(this.contatoBase.toString(), retornoEsperado);
+	}
+
+	@Test
+	void testTagsReplacementSystem() {
+		this.contatoBase.addTag("ufcg", 0);
+		this.contatoBase.addTag("ccc", 0);
+		String retornoEsperado = 	"Miguel Rodrigues\n" +
+									"555-5551\n" +
+									"ccc";
+		assertEquals(this.contatoBase.toString(), retornoEsperado);
 	}
 }
