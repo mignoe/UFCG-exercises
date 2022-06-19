@@ -41,7 +41,7 @@ class ContatoTest {
 	void testToString() {
 		String msg = "Esperando retornar nome completo e telefone em duas linhas";
 		String retornoEsperado = 	"Miguel Rodrigues\n" +
-									"555-5551";
+						"555-5551";
 		assertEquals(this.contatoBase.toString(), retornoEsperado, msg);
 	}
 
