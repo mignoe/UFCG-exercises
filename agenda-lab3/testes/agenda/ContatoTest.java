@@ -50,7 +50,7 @@ class ContatoTest {
 		Contato contatoSemSobrenome = new Contato("Miguel", "", "(00) 00000-0000");
 		String msg = "Esperando retornar o primeiro nome e telefone em duas linhas";
 		String retornoEsperado = 	"Miguel \n" + 
-									"(00) 00000-0000";
+						"(00) 00000-0000";
 		assertEquals(contatoSemSobrenome.toString(), retornoEsperado, msg);
 	}
 	
@@ -64,7 +64,9 @@ class ContatoTest {
 	@Test
 	void testTagsLowestPossiblePosition() {
 		this.contatoBase.addTag("ufcg", 0);
-		String retornoEsperado = "Miguel Rodrigues\n555-5551\nufcg";
+		String retornoEsperado = 	"Miguel Rodrigues\n" +
+						"555-5551\n" +
+						"ufcg";
 		assertEquals(this.contatoBase.toString(), retornoEsperado);
 	}
 	
