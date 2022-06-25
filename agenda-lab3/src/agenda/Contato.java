@@ -6,6 +6,12 @@ public class Contato {
 	private String telefone;
 	private String[] tags = new String[5];
 	
+	/**
+	 * 
+	 * @param nome
+	 * @param sobreNome
+	 * @param telefone
+	 */
 	public Contato(String nome, String sobreNome, String telefone) {
 		this.nome = nome;
 		this.sobreNome = sobreNome;

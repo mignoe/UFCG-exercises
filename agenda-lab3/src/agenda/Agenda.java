@@ -39,6 +39,11 @@ public class Agenda {
 		return arrayContatos;
 	}
 	
+	/**
+	 * Lista todos os contatos favoritados.
+	 * 
+	 * @return Array com os favoritos.
+	 */
 	public String[] getFavoritos() {
 		String[] arrayFavoritos = new String[TAMANHO_FAVORITOS];
 		for (int i = 0; i < TAMANHO_FAVORITOS; i++) {
@@ -74,6 +79,13 @@ public class Agenda {
 			this.contatos[posicao] = new Contato(nome, sobrenome, telefone);
 	}
 	
+	/**
+	 * Verifica se o contato com nome e sobrenome inseridos já existe.
+	 * 
+	 * @param nome
+	 * @param sobrenome
+	 * @return true se já existe, false caso contrário.
+	 */
 	public boolean contatoJaCadastrado(String nome, String sobrenome) {
 		String contato = nome + " " + sobrenome;
 		boolean contatoJaCadastrado = Arrays.asList(getContatos()).contains(contato);
@@ -81,25 +93,44 @@ public class Agenda {
 		return contatoJaCadastrado;
 	}
 	
+	/**
+	 * Adiciona contato à lista de favoritos.
+	 * 
+	 * @param contato Posição do contato.
+	 * @param posicao A qual o contato será inserido nos favoritos.
+	 */
 	public void adicionaFavorito(int contato, int posicao) {
 		favoritos[posicao] = contatos[contato];
-		
 	}
 	
+	/**
+	 * Verifica se o contato é um contato favoritado.
+	 * 
+	 * @param contato Posição do contato no array de contatos.
+	 * @return true se é um favorito, false caso contrário.
+	 */
 	public boolean ehFavorito(int contato) {
 		return Arrays.asList(favoritos).contains(contatos[contato]);
 	}
 	
+	/**
+	 * Adiciona tag(String) ao(s) contato(s).
+	 * 
+	 * @param contatos Array com as posições dos contatos.
+	 * @param tag Tag a ser adicionada em contatos.
+	 * @param posicaoTag Qual a posição a tag deve ocupar nos contatos.
+	 */
 	public void adicionaTag(int[] contatos, String tag, int posicaoTag) {
 		for (int contato : contatos) {
 			this.contatos[contato].addTag(tag, posicaoTag);
 		}
 	}
 	
-	public boolean ehPosicaoComCadastro(int posicao) {
-		return this.contatos[posicao] != null;
-	}
-	
+	/**
+	 * Remove contato da array de contatos.
+	 * 
+	 * @param contatos Posição dos contatos na array de contatos.
+	 */
 	public void removeContatos(int[] contatos) {
 		for (int contato : contatos) {
 			// Removendo contato dos favoritos;
