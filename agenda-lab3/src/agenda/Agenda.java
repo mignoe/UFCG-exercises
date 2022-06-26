@@ -5,7 +5,7 @@ import java.util.Arrays;
 /**
  * Uma agenda que mantém uma lista de contatos com posições. Podem existir 100 contatos. 
  * 
- * @author nazareno
+ * @author nazareno e Miguel de Oliveira Rodrigues
  *
  */
 public class Agenda {
@@ -13,7 +13,16 @@ public class Agenda {
 	private static final int TAMANHO_AGENDA = 100;
 	private static final int TAMANHO_FAVORITOS = 10;
 	
+	/**
+	 * Representa os contatos cadastrados.
+	 * tipo Array de Contato.
+	 */
 	private Contato[] contatos;
+
+	/**
+	 * Representa os contatos favoritados.
+	 * tipo Array de Contato.
+	 */
 	private Contato[] favoritos;
 
 	/**
