@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2022-10-01T19:22:54.220-0300</date>
+  <logger>MIGUEL DE OLIVEIRA RODRIGUES</logger>
+  <level>FINE</level>
+  <message>File 121110343-MIGUEL DE OLIVEIRA RODRIGUES.zip was received. It was sent by MIGUEL DE OLIVEIRA RODRIGUES from IP 10.0.0.139 at 01-10-2022 19*22*54</message>
+</record>

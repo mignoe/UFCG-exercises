@@ -86,7 +86,7 @@ public class RepositorioProdutoArrayList implements RepositorioProdutoInterface 
 	 */
 	public void remover(int codigo) {
 		// TODO Implement your code here
-		throw new UnsupportedOperationException("Not implemented yet!");
+		produtos.remove(new Produto(codigo, null, 0, null));
 	}
 
 	/**
@@ -98,6 +98,11 @@ public class RepositorioProdutoArrayList implements RepositorioProdutoInterface 
 	 */
 	public Produto procurar(int codigo) {
 		// TODO Implement your code here
-		throw new UnsupportedOperationException("Not implemented yet!");
+		int index = this.procurarIndice(codigo);
+		if (index == -1) {
+			return null;
+		}
+
+		return this.produtos.get(this.procurarIndice(codigo));
 	}
 }
