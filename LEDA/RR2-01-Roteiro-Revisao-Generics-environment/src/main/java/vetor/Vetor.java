@@ -1,5 +1,6 @@
 package vetor;
 
+import java.util.Arrays;
 import java.util.Comparator;
 
 /**
@@ -9,7 +10,7 @@ import java.util.Comparator;
  * @author Adalberto
  *
  */
-public class Vetor<T> {
+public class Vetor<T extends Comparable> {
 
 	// O array interno onde os objetos manipulados são guardados
 	private T[] arrayInterno;
@@ -26,7 +27,7 @@ public class Vetor<T> {
 
 	public Vetor(int tamanho) {
 		super();
-		this.arrayInterno = (T[]) new Object[tamanho];
+		this.arrayInterno = (T[]) new Comparable[tamanho];
 		this.tamanho = tamanho;
 		this.indice = -1;
 	}
@@ -39,6 +40,32 @@ public class Vetor<T> {
 		this.comparadorMinimo = comparadorMinimo;
 	}
 
+	public T maximo() {
+		if (this.isVazio()) return null;
+		
+		T biggest = this.arrayInterno[0];
+		for (T object : arrayInterno) {
+			if(object.compareTo(biggest) > 0) {
+				biggest = object;
+			}
+		}
+
+		return biggest;
+	}
+
+	public T minimo() {
+		if (this.isVazio()) return null;
+		
+		T smallest = this.arrayInterno[0];
+		for (T object : arrayInterno) {
+			if(object.compareTo(smallest) < 0) {
+				smallest = object;
+			}
+		}
+
+		return smallest;
+	}
+	
 	// Insere um objeto no vetor
 	public void inserir(T o) {
 		this.arrayInterno[indice + 1] = o;
@@ -49,13 +76,16 @@ public class Vetor<T> {
 	public void remover(T o) {
 		for (int i = 0; i <= indice; i++) {
 			if (arrayInterno[i].equals(o)) {
-				for (int j = i; j < inde; j++) {
+				for (int j = i; j < indice; j++) {
 					arrayInterno[j] = arrayInterno[j + 1];
 				}
 
 				arrayInterno[indice] = null;
+				break;
 			}
 		}
+
+		indice--;
 	}
 
 	// Procura um elemento no vetor
