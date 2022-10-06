@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2022-10-06T10:54:02.698-0300</date>
+  <logger>MIGUEL DE OLIVEIRA RODRIGUES</logger>
+  <level>FINE</level>
+  <message>File 121110343-MIGUEL DE OLIVEIRA RODRIGUES.zip was received. It was sent by MIGUEL DE OLIVEIRA RODRIGUES from IP 150.165.42.131 at 06-10-2022 10*54*02</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2022-10-06T13:07:36.713-0300</date>
+  <logger>MIGUEL DE OLIVEIRA RODRIGUES</logger>
+  <level>FINE</level>
+  <message>File 121110343-MIGUEL DE OLIVEIRA RODRIGUES.zip was received. It was sent by MIGUEL DE OLIVEIRA RODRIGUES from IP 150.165.74.36 at 06-10-2022 13*07*36</message>
+</record>

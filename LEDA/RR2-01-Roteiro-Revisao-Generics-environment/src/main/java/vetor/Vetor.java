@@ -22,8 +22,8 @@ public class Vetor<T extends Comparable> {
 	private int indice;
 
 	// O Comparators a serem utilizados
-	private Comparator comparadorMaximo;
-	private Comparator comparadorMinimo;
+	private Comparator<T> comparadorMaximo;
+	private Comparator<T> comparadorMinimo;
 
 	public Vetor(int tamanho) {
 		super();
@@ -32,38 +32,12 @@ public class Vetor<T extends Comparable> {
 		this.indice = -1;
 	}
 
-	public void setComparadorMaximo(Comparator comparadorMaximo) {
+	public void setComparadorMaximo(Comparator<T> comparadorMaximo) {
 		this.comparadorMaximo = comparadorMaximo;
 	}
 
-	public void setComparadorMinimo(Comparator comparadorMinimo) {
+	public void setComparadorMinimo(Comparator<T> comparadorMinimo) {
 		this.comparadorMinimo = comparadorMinimo;
-	}
-
-	public T maximo() {
-		if (this.isVazio()) return null;
-		
-		T biggest = this.arrayInterno[0];
-		for (T object : arrayInterno) {
-			if(object.compareTo(biggest) > 0) {
-				biggest = object;
-			}
-		}
-
-		return biggest;
-	}
-
-	public T minimo() {
-		if (this.isVazio()) return null;
-		
-		T smallest = this.arrayInterno[0];
-		for (T object : arrayInterno) {
-			if(object.compareTo(smallest) < 0) {
-				smallest = object;
-			}
-		}
-
-		return smallest;
 	}
 	
 	// Insere um objeto no vetor
@@ -109,4 +83,37 @@ public class Vetor<T extends Comparable> {
 		return this.indice == tamanho - 1;
 	}
 
+	public T maximo() {
+		T maior = this.arrayInterno[0];
+		for (T object : arrayInterno) {
+			if (this.comparadorMaximo.compare(maior, object) < 0) {
+				maior = object;
+			}
+		}
+
+		return maior;
+	}
+
+	public T minimo() {
+		T menor = this.arrayInterno[0];
+		for (T object : arrayInterno) {
+			if (this.comparadorMinimo.compare(menor, object) < 0) {
+				menor = object;
+			}
+		}
+
+		return menor;
+	}
+}
+
+class ComparatorMaximo implements Comparator<Aluno> {
+	public int compare(Aluno a1, Aluno a2) {
+		return (int)  (a1.getMedia() - a2.getMedia());
+	}
+}
+
+class ComparaMinimo implements  Comparator<Aluno> {
+	public int compare(Aluno a1, Aluno a2) {
+		return (int)  (a2.getMedia() - a1.getMedia());
+	}
 }
