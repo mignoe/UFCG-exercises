@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="submission" />
+        <module name="RR2-01-Roteiro-Revisao-Generics-environment" />
       </profile>
     </annotationProcessing>
   </component>

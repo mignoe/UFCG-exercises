@@ -1,23 +1,11 @@
 package produto;
 
-import java.util.ArrayList;
-
-/**
- * Classe que representa um repositório de produtos usando ArrayList como
- * estrutura sobrejacente. Alguns métodos (atualizar, remover e procurar) ou
- * executam com sucesso ou retornam um erro. Para o caso desde exercício, o erro
- * será representado por uma RuntimeException que não precisa ser declarada na
- * clausula "throws" do mos metodos.
- *
- * @author Adalberto
- */
-public class RepositorioProdutoArrayList implements RepositorioProdutoInterface {
+public class RepositorioProduto<T> implements RepositorioProdutoInterface<T> {
 
 	/**
-	 * A estrutura onde os produtos sao mantidos. Voce nao precisa se preocupar
-	 * por enquanto com o uso de generics em ArrayList.
+	 * A estrutura (array) onde os produtos sao mantidos.
 	 */
-	private ArrayList<Produto> produtos;
+	private T[] produtos;
 
 	/**
 	 * A posicao do ultimo elemento inserido no array de produtos. o valor
@@ -25,9 +13,9 @@ public class RepositorioProdutoArrayList implements RepositorioProdutoInterface 
 	 */
 	private int index = -1;
 
-	public RepositorioProdutoArrayList(int size) {
+	public RepositorioProduto(int size) {
 		super();
-		this.produtos = new ArrayList<Produto>();
+		this.produtos = (T[]) new Object[size];
 	}
 
 	/**
@@ -39,10 +27,15 @@ public class RepositorioProdutoArrayList implements RepositorioProdutoInterface 
 	 * @param codigo
 	 * @return
 	 */
-	
-	 private int procurarIndice(int codigo) {
+	private int procurarIndice(int codigo) {
 		// TODO Implement your code here
-		return produtos.indexOf(new Produto(codigo, null, 0.0, null));
+		for (int i = 0; i < this.produtos.length; i++){
+			if (this.produtos[i].getCodigo() == codigo) {
+				return i;
+			}
+		}
+
+		return -1;
 	}
 
 	/**
@@ -51,19 +44,22 @@ public class RepositorioProdutoArrayList implements RepositorioProdutoInterface 
 	 * @param codigo
 	 * @return
 	 */
-	@Override
 	public boolean existe(int codigo) {
-		// TODO Implement your code here
-		return produtos.contains(new Produto(codigo, null, 0.0, null));
+		return this.procurarIndice(codigo) != -1; 
 	}
 
 	/**
 	 * Insere um novo produto (sem se preocupar com duplicatas)
 	 */
-	@Override
-	public void inserir(Produto produto) {
-		// TODO Implement your code here
-		produtos.add(produto);
+	public void inserir(T produto) {
+		T[] produtosNovo = (T[]) new Objet[this.produtos.length + 1];
+		for (int i = 0; i < this.produtos.length; i++){
+			produtosNovo[i] = this.produtos[i];
+		}
+
+		produtosNovo[this.produtos.length + 1] = produto;
+
+		this.produtos = produtosNovo;
 	}
 
 	/**
@@ -71,10 +67,9 @@ public class RepositorioProdutoArrayList implements RepositorioProdutoInterface 
 	 * esteja no array. Note que, para localizacao, o código do produto será
 	 * utilizado.
 	 */
-	@Override
-	public void atualizar(Produto produto) {
+	public void atualizar(T produto) {
 		// TODO Implement your code here
-		this.produtos.set(procurarIndice(produto.getCodigo()), produto);
+		this.produtos[this.procurarIndice(produto.getCodigo())] = produto;
 	}
 
 	/**
@@ -86,7 +81,17 @@ public class RepositorioProdutoArrayList implements RepositorioProdutoInterface 
 	 */
 	public void remover(int codigo) {
 		// TODO Implement your code here
-		produtos.remove(new Produto(codigo, null, 0, null));
+		int indiceRemovido = procurarIndice(codigo);
+		for (int i = indiceRemovido; i < this.produtos.length - 1; i++) {
+			this.produtos[i] = this.produtos[i + 1];
+		}
+
+		T[] produtosNovo = (T[]) new Object[this.produtos.length - 1];
+		for (int i = 0; i < produtosNovo.length; i++){
+			produtosNovo[i] = this.produtos[i];
+		}
+
+		this.produtos = produtosNovo;
 	}
 
 	/**
@@ -96,13 +101,7 @@ public class RepositorioProdutoArrayList implements RepositorioProdutoInterface 
 	 * @param codigo
 	 * @return
 	 */
-	public Produto procurar(int codigo) {
-		// TODO Implement your code here
-		int index = this.procurarIndice(codigo);
-		if (index == -1) {
-			return null;
-		}
-
-		return this.produtos.get(this.procurarIndice(codigo));
+	public T procurar(int codigo) {
+		return (T) this.produtos[this.procurarIndice(codigo)];
 	}
 }
