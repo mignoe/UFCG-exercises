@@ -1,0 +1,17 @@
+Scanner sc = new Scanner(System.in);
+String[] linha = sc.nextLine().split(" ");
+
+int[] nums = new int[linha.length];
+for (int i = 0; i < linha.length; i++) {
+    nums[i] = Integer.parseInt(linha[i]);
+}
+
+import java.util.Scanner;
+
+// Pega entrada
+Scanner sc = new Scanner(System.in);
+String entrada = sc.nextLine();
+
+// Transfera para inteiro
+Scanner sc = new Scanner(System.in);
+int entrada = Integer.parseInt(sc.nextLine());

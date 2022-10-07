@@ -1,14 +1,16 @@
-public class Palindromo {
+class Palindromo {
     public static void main(String[] args) {
-        String exemplo = "casa";
-
-        System.out.println(palindromo(exemplo));
+        char[] exemplo = {'a', 'n', 'a'};
+        char[] exemplo2 = {'c', 'a', 's', 'a'};
+        
+        System.out.println(palindromo(exemplo)); // true
+        System.out.println(palindromo(exemplo2)); // false
     }
 
-    public static boolean palindromo(String str){
+    public static boolean palindromo(char[] palavra){
         boolean palindromo = true;
-        for (int i = 0; i < str.length() / 2; i ++) {
-            if (str.charAt(i) != str.charAt(str.length() - 1 - i)) {
+        for (int i = 0; i < palavra.length / 2; i ++) {
+            if (palavra[i] != palavra[palavra.length - 1 - i]) {
                 palindromo = false;
             }
         }

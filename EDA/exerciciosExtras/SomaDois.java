@@ -1,21 +1,34 @@
-public class SomaDois {
-    public static void main(String[] args) {
-        int[] exemplo = {1, 2, 3, 4, 5, 6, 7, 8};
+import java.util.*;
 
-        System.out.println(somaDois(exemplo, 10));
+class SomaDois {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String[] linha = sc.nextLine().split(" ");
+        int target = Integer.parseInt(sc.nextLine());
+
+        int[] nums = new int[linha.length];
+        for (int i = 0; i < linha.length; i++) {
+            nums[i] = Integer.parseInt(linha[i]);
+        }
+
+        System.out.println(somaDois(nums, target));
     }
 
     public static String somaDois(int[] nums, int target) {
         int numeroPares = 0;
-        String pares = "";
+        String par = "-1";
         for (int i = 0; i < nums.length; i++) {
             for (int j = i; j < nums.length; j ++) {
                 if (nums[i] + nums[j] == target && nums[i] != nums[j]) {
-                    pares += "[" + nums[i] + ", " + nums[j] + "] ";
+                    par = nums[i] + " " + nums[j];
+                    break;
                 }
             }
         }
 
-        return pares;
+        return par;
     }
+
 }
+
+// O(n)
