@@ -7,3 +7,13 @@
   <level>FINE</level>
   <message>File 121110343-MIGUEL DE OLIVEIRA RODRIGUES.zip was received. It was sent by MIGUEL DE OLIVEIRA RODRIGUES from IP 150.165.42.128 at 13-10-2022 10*29*35</message>
 </record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2022-10-13T11:13:20.625-0300</date>
+  <logger>MIGUEL DE OLIVEIRA RODRIGUES</logger>
+  <level>FINE</level>
+  <message>File 121110343-MIGUEL DE OLIVEIRA RODRIGUES.zip was received. It was sent by MIGUEL DE OLIVEIRA RODRIGUES from IP 150.165.42.128 at 13-10-2022 11*13*20</message>
+</record>
