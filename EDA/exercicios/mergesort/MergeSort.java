@@ -13,12 +13,10 @@ public class MergeSort {
 	     }
 	     
 	     mergeSort(nums, 0, nums.length - 1);
-	     
-	     System.out.println(Arrays.toString(nums));
 	}
 	
 	public static void mergeSort(int[] nums, int ini, int fim) {
-		System.out.println();
+		System.out.println(Arrays.toString(Arrays.copyOfRange(nums, ini, fim + 1)));
 		if ( ini < fim) {
 			int meio = (ini + fim) / 2;
 			mergeSort(nums, ini, meio);
@@ -46,5 +44,7 @@ public class MergeSort {
 		
 		while (i <= meio) nums[k++] = helper[i++];
 		while (j <= fim) nums[k++] = helper[j++];
+		
+		System.out.println(Arrays.toString(Arrays.copyOfRange(nums, ini, fim + 1)));
 	}
 }
