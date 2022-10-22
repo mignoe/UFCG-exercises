@@ -2,14 +2,21 @@ package quicksort;
 
 import java.util.Arrays;
 import java.util.Iterator;
+import java.util.Scanner;
 
 public class QuickSort {
 	public static void main(String[] args) {
-		int[] nums = {10, 2, 5, 6, 3, 1, -50, -60, 23, 23, 90, 2000, -2000};
+		
+		Scanner sc = new Scanner(System.in);
+		String[] linha = sc.nextLine().split(" ");
+		
+		int[] nums = new int[linha.length];
+		for (int i = 0; i < linha.length; i++) {
+			nums[i] = Integer.parseInt(linha[i]);
+		}
 		
 		quickSort(nums);
 		
-		System.out.println(Arrays.toString(nums));
 	}
 	
 	public static void swap(int i, int j, int[] nums) {
@@ -19,34 +26,31 @@ public class QuickSort {
 	}
 	
 	public static int particiona(int[] nums, int left, int right) {
-		int mid = (left + right) / 2;
-		int[] numerosMediana = {nums[left], nums[mid], nums[right]};
-		
-		Arrays.sort(numerosMediana);
-		int pivot = numerosMediana[1];
-		
-		int indexPivot = left;
-		if (pivot == nums[mid])
-			indexPivot = mid;
-		if (pivot == nums[right])
-			indexPivot = right;
-		
-		swap(left, indexPivot, nums);
-		
-		int i = left + 1;
-		for (int j = i; j < nums.length; j++) {
-			if (nums[j] < pivot)
-				swap(i++, j, nums);
-		}
+		int pivot = nums[left];
 
-		swap(left, i - 1, nums);		
 		
-		return i - 1;
+		int i = left;
+		for (int j = i + 1; j <= right; j++) {
+			if (nums[j] <= pivot) {
+				i++;
+				swap(i, j, nums);
+			}
+		}
+		
+		swap(left, i, nums);		
+		
+		
+		
+		return i;
 	}
 	
 	public static void quickSort(int[] nums, int left, int right) {
 		if (left < right) {
 			int pontoParticao = particiona(nums, left, right);
+			
+			int len = Arrays.toString(nums).length();
+			System.out.println(Arrays.toString(nums).substring(1, len - 1).replaceAll(", "," "));
+			
 			quickSort(nums, left, pontoParticao - 1);
 			quickSort(nums, pontoParticao + 1, right);
 		}
