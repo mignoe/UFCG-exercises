@@ -40,11 +40,4 @@ class Heap {
 		
 		return isheap;
 	}
-	
-	private static int right(int posicao) {
-		return 2 * (posicao + 1);
-	}
-	private static int left(int posicao) {
-		return 2 * posicao + 1;
-	}
 }
